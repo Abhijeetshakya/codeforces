@@ -1,24 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std ; 
 
-int number(string s ){
+int check(string s ){
     int nu = 0 ; 
     int digit = 1000 ; 
     for( char c : s){
         nu +=  (c-'0')*digit ; 
         digit /= 10 ; 
     }
-    return nu ;
+    int root = sqrt(nu) ;
+    if(root*root != nu) return -1 ; 
+    if(root*root == nu) return root ; 
 }
 
 int main(){
     int t ; 
     cin >> t ; 
-    for( int i = 0 ; i < t ; i++){
+    while(t--){
         string s ; 
         cin >> s ; 
-        int num = number(s) ; 
-        
+        int ans = check(s) ;
+        if(ans == -1){
+            cout << -1 << endl ; 
+        }else {
+            cout << "0 " <<  ans << endl ; 
+        }
+
     }
     return 0 ; 
 }
